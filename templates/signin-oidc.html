@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - D2M</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/signin-oidc.css') }}">
+
+        <!-- Boxicons CSS -->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
+        <script id="load-msal" src="https://alcdn.msauth.net/browser/2.31.0/js/msal-browser.js"
+        integrity="sha384-BO4qQ2RTxj2akCJc7t6IdU9aRg6do4LGIkVVa01Hm33jxM+v2G+4q+vZjmOCywYq"
+        crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styling.css') }}">
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+
+                        
+    </head>
+    <body>
+        <nav class="navbar" style="position: fixed">
+            <a href="{{ url_for('get_home') }}"><img src="{{url_for('static', filename='images/logo.png')}}" alt="D2M logo" style="width:3rem;height:3rem; border-radius: 10px;"></a>
+        </nav>
+        <section id="formMode" class="container forms">
+            <div class="form login">
+                <div class="form-content">
+                    <header>Login</header>
+                    <form action="#">
+                        <div class="field input-field">
+                            <input id="existingUsername" type="username" placeholder="Username" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input id="existingPassword" type="password" placeholder="Password" class="password">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+                        <style>
+                            #incorrectCredentials {
+                                display: none;
+                            }
+                        </style>
+
+                        <div class="alert">
+                            <b id="incorrectCredentials">*The username/password is incorrect*</b>
+                        </div>
+
+                        <div class="form-link">
+                            <a id="resetLink" href="#" class="reseter forgot-pass">Forgot password?</a>
+                        </div>
+
+                        <div class="field button-field">
+                            <button type = "button" onclick="loginExisting()">Login</button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <div>Don't have an account?</div>
+                        <a onclick="signIn()" class="signup-link">Sign up with your school email</a>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="media-options">
+                    <a href="#" onclick="signIn()" class="field google">
+                        <!-- <img src="../static/images/google.png" alt="" class="google-img"> -->
+                        <span style = "cursor: pointer;">Login with School Email</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Signup Form -->
+
+            <div class="form signup">
+                <div class="form-content">
+                    <header>Signup</header>
+                    <form action="#">
+                        <!-- <div class="field input-field">
+                            <input type="email" placeholder="GCC Email" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="username" placeholder="Username" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" placeholder="Password" class="password">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div> -->
+
+                        <div class="field button-field">
+                            <button type = "button" onclick="signIn()">Signup</button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Show registration -->
+
+            <div class="form register">
+                <div class="form-content">
+                    <header>Register</header>
+                    <form action="#" id = "registerForm">
+                        <!-- <div class="field input-field">
+                            <input type="email" placeholder="GCC Email" class="input">
+                        </div> -->
+
+                        <div class="field input-field">
+                            <input id="newUsernameField" type="text" placeholder="Username" class="input" maxlength="64">
+                        </div>
+
+                        <div class="field input-field">
+                            <input id="newPasswordField" type="password" placeholder="Password" class="password">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+                        <style>
+                            #invalidUsername {
+                                display: none;
+                            }
+                        </style>
+
+                        <div class="alert">
+                            <b id="invalidUsername">*This username has already been taken*</b>
+                        </div>
+
+                        <style>
+                            #invalidPassword {
+                                display: none;
+                            }
+                        </style>
+
+                        <div class="alert">
+                            <b id="invalidPassword">*The password must be at least 8 characters*</b>
+                        </div>
+
+                        <div class="field button-field">
+                            <!-- <button onclick="signIn()">Register</button> -->
+                            <button type = "button" onclick="register()">Register</button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <span>Already have an account? <a onclick="signOut()" class="link login-link">Login</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Password reset -->
+
+            <div class="form reset">
+                <div class="form-content">
+                    <header>Reset Password</header>
+                    <form action="#" id = "resetForm">
+                        <div class="field input-field">
+                            <input id="resetUsername" type="text" placeholder="Username" class="input">
+                        </div>
+
+                        <style>
+                            #usernameDNE {
+                                display: none;
+                            }
+                        </style>
+
+                        <div class="alert">
+                            <b id="usernameDNE">*This username does not exist*</b>
+                        </div>
+
+                        <div id="loader" class="spinner-border" role="status" style="display: none;">
+                            <span class="sr-only">Processing...</span>
+                        </div>
+                          
+                        <style>
+                            #emailSuccess {
+                                display: none;
+                                color:green;
+                                font-size: 12px;
+                                text-align: center;
+                                margin-top: 10px;
+                            }
+                        </style>
+
+                        <div>
+                            <b id="emailSuccess">*Email successfully sent. Follow the link in the email to reset your password.*</b>
+                        </div>
+
+                        <style>
+                            #emailError {
+                                display: none;
+                            }
+                        </style>
+        
+                        <div id="emailError" class="alert">
+                            <span>*There was an issue sending the email*</span>
+                        </div>
+
+                        <div class="field button-field">
+                            <button type="button" onclick="sendEmail()">Send Email</button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <a id="resetLink" href="#" class="reseter reset-link">Login/Signin</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript -->
+        <!-- importing app scripts (load order is important) -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/authConfig.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/authRedirect.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/signin-oidc.js') }}"></script>
+    </body>
+</html>

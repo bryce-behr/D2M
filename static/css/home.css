@@ -1,0 +1,30 @@
+/* This is a comment in CSS */
+
+/* Style for the body element - sets the background color and font */
+body {
+    /*background-color: #f0f0f0; /* Light gray background */
+    font-family: Arial, sans-serif; /* Arial font, with sans-serif as the fallback */
+  }
+  
+  /* Style for paragraphs within a class named 'content' */
+  .content p {
+    color: #666666; /* Medium gray text */
+    line-height: 1.5; /* 1.5 times the normal line height */
+    margin-bottom: 20px; /* 20 pixels of space below paragraphs */
+  }
+  
+  .row {
+    margin: 0px;
+    /* data-masonry: '{"percentPosition": true }'; */
+    text-decoration: none;
+  }
+
+  .post-container{
+    margin: 0px !important;
+  }
+  /* CSS for the image links */
+  .image-link {
+    border-radius: 1rem; /* Adjust the value as needed */
+  }
+
+  

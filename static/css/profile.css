@@ -1,0 +1,79 @@
+.profile-head {
+    transform: translateY(7rem)
+}
+
+.cover {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x:hidden;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid var(--bs-secondary-bg);
+    background-color: var(--bs-secondary-bg);
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: var(--bs-secondary-bg);
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: var(--bs-border-color);
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+
+   /* CSS for the image links */
+   .image-link {
+    border-radius: 1rem; /* Adjust the value as needed */
+  }
+
+  
+  /* Style for columns */
+.column {
+  width: calc(100% / 3); /* Ensure each column takes up one-third of the container's width */
+  margin: 10px; /* Add spacing around each column */
+  float: left; /* Align columns horizontally */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Responsive design for columns */
+@media screen and (max-width: 768px) {
+  .column {
+      width: 100%; /* Change column width to full width on smaller screens */
+  }
+}
+
+/* Additional styles for images within columns */
+.column img {
+  display: block; /* Ensure images fill the entire column width */
+  max-width: 100%; /* Make sure images don't exceed the column width */
+  height: auto; /* Maintain aspect ratio of images */
+}

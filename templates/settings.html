@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %} 
+    Settings
+{% endblock %}
+
+{% block head %}
+<script src="{{url_for('static', filename='js/settings.js')}}"></script>
+<link rel = "stylesheet" href = "{{ url_for('static', filename='css/settings.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h2>
+        <a href="{{ url_for('get_home') }}"><img src="{{url_for('static', filename='images/backarrow.png')}}" alt="back" style="width:1em;height:1em;"></a>
+        <span style="margin-left: 1rem;">User Settings</span>
+    </h2>
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <h3>Profile</h3>
+                <hr>
+
+                <div class="alert alert-danger" id="invalidUsername" hidden>
+                    <b>This username has already been taken</b>
+                </div>
+
+                <div class="mb-2">
+                    <label for="username">Username</label>
+                    <input class="form-control" id="username" maxlength="64" name="username" required type="text" value="{{user.username}}">
+                </div>
+
+                <div class="mb-2">
+                    <label for="bio">Biography</label>
+                    <textarea class="form-control" id="bio" maxlength="1024" name="bio">{{user.bio}}</textarea>
+                </div>
+
+                <div class="mb-2">
+                    <div>
+                        <label for="icon">Profile Picture</label>
+                        <input accept="image/*" id="icon" name="icon" type="file">
+                    </div>
+                    <br>
+                    <img id="icon_img" src='{{ pfp }}' alt="Icon Image" class="col-sm-12 col-md-6 settingImg" hidden>
+                </div>
+
+                <div class="mb-2">
+                    <div>
+                        <label for="banner">Banner</label>
+                        <input accept="image/*" id="banner" name="banner" type="file">
+                    </div>
+                    <br>
+                    <img id="banner_img" src='{{ banner }}' alt="Banner Image" class="col-sm-12 col-md-6 settingImg" hidden>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <h3>Account Backup</h3>
+                <hr>
+
+                <div class="alert alert-danger" id="invalidEmail" hidden>
+                    <b>Must be in email format</b>
+                </div>
+
+                <div class="mb-2">
+                    <label for="backup_email">Backup Email</label>
+                    <input class="form-control" id="backup_email" name="backup_email" type="email" value="{{user.backupEmail}}">
+                </div>
+
+                <div class="alert alert-danger" id="wrongPassword" hidden>
+                    <b>Incorrect password</b>
+                </div>
+                
+                <div class="mb-2">
+                    <label for="old_password">Current Password</label>
+                    <input class="form-control" id="old_password" maxlength="256" minlength="8" name="old_password" type="password">
+                </div>
+
+                <div class="mb-2">
+                    <label for="change_password">New Password</label>
+                    <input class="form-control" id="change_password" maxlength="256" minlength="8" name="change_password" type="password">
+                </div>
+
+                <div class="mb-4">
+                    <label for="confirm_password">Confirm New Password</label>
+                    <input class="form-control" id="confirm_password" name="confirm_password" type="password">
+                </div>
+
+                <div class="alert alert-warning" id="passwordMatchError" hidden>
+                    <b>The new passwords don't match</b>
+                </div>
+
+                <div class="alert alert-warning" id="invalidLength" hidden>
+                    <b>The new password must be between 8 and 256 characters</b>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-md-6 text-center" style="margin: auto;">
+                <div class="alert alert-success mb-2" id="success" style="text-align:center;" hidden>
+                    <b>Your information was updated!</b>
+                </div>
+                <button class="btn btn-danger" type = "button" onclick="applyChanges()" id="submit">Apply Changes</button>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+

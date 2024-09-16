@@ -1,0 +1,258 @@
+/* main page structure */
+
+#main-content-div {
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 90%;
+    border-radius: 1rem;
+}
+
+#fileInput, #addImgInput {
+    display: none;
+}
+
+/* MEME DISPLAY */
+
+#meme-img {
+    display: block;
+    margin: auto;
+    background-color: white;
+}
+
+#meme {
+    margin: 0 auto 1rem;
+    display: block;
+    position: relative;
+}
+
+.meme-component {
+    margin: 1px;
+    border: dashed white 1px;
+    outline: dashed black 1px;
+    cursor: move;
+    width: 50%;
+}
+
+.extra-img {
+    width: 50%;
+    height: 50%;
+}
+
+.meme-text {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 32px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.meme-component > img {
+    width: 100%;
+    height: 100%;
+}
+
+.bold {font-weight: bold;}
+.italics {font-style: italic;}
+.strike {text-decoration: line-through;}
+.underline {text-decoration: underline;}
+.has-shadow {-webkit-text-stroke: white 2px;}
+.all-caps {text-transform: uppercase;}
+
+.text-box-container, #drawing, .image-container {
+    top: -1px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    max-width: 100%;
+    height: 100%;
+}
+
+/* left tool bar */
+
+#image-tool-bar {
+    margin: 0rem auto 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#image-tool-bar > button {
+    width: 33%;
+}
+
+#image-tools > div {
+    display: flex;
+    margin: 1rem auto;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#image-tools > div > div {
+    display: inline-flex;
+}
+
+#image-tools input {
+    width:50%;
+}
+
+input::-moz-color-swatch {
+    border: none;
+}
+
+#image-tools label {
+    margin-right: 0.5rem;
+}
+
+#spacer {
+    max-width: 100%;
+    display: inline;
+}
+
+/* right tools */
+#text-tool-bar > div {
+    height: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#right-content > div {
+    width: 25.5rem;
+}
+
+.settings-menu, .trash-btn, .img-trash-btn {
+    margin-left: 0.25rem;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+textarea.form-control, #post-title {
+    display: inline-block;
+    min-height: 1rem;
+    height: 2.5rem;
+    resize: none;
+}
+
+#post-title {
+    width: 12rem;
+}
+
+#right-content > div {
+    margin-bottom: 1rem;
+}
+
+.dropdown-menu {
+    padding: 1rem;
+    width: 18vw;
+}
+
+.dropdown-menu div {
+    margin-bottom: 0.5rem;
+}
+
+/* MODAL SETTINGS */
+
+.modal-button {
+    height: 5rem;
+    overflow: hidden;
+}
+
+.modal-button img {
+    width: 100%;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-header h3, .modal-header button {
+    display: flex;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-footer button {
+    display: flex;
+}
+
+#new-box-btn {
+    width: 25.5rem;
+}
+
+/* UI RESIZABLE CHANGESE */
+.ui-resizable-ne, .ui-resizable-nw, .ui-resizable-se, .ui-resizable-sw {
+    width: 15px;
+    height: 15px;
+}
+
+.ui-resizable-s, .ui-resizable-n {
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: calc(100% - 20px);
+    height: 10px;
+}
+
+.ui-resizable-e, .ui-resizable-w {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: calc(100% - 20px);
+    width: 10px;
+}
+
+.ui-resizable-n {
+    top: -7px;
+}
+.ui-resizable-ne {
+    top: -7px;
+    right: -7px;
+}
+
+.ui-resizable-e {
+    right: -7px;
+}
+
+.ui-resizable-se {
+    right: -7px;
+    bottom: -7px;
+}
+
+.ui-resizable-s {
+    bottom: -7px;
+}
+
+.ui-resizable-sw {
+    bottom: -7px;
+    left: -7px;
+}
+
+.ui-resizable-w {
+    left: -7px;
+}
+
+.ui-resizable-nw {
+    left: -7px;
+    top: -7px;
+}
+
+.ui-icon {
+    background-image: none;
+}
+
+#cropper > .ui-resizable-handle {
+    width: 15px;
+    height: 15px;
+    background-color: #bbbbbb;
+    border-radius: 0.25rem;
+    border: solid black 1px;
+}
+
+.c-tag-badge {
+    margin-right: .4em;
+  }
